@@ -16,6 +16,6 @@ async def root(id):
     return comments
 
 @app.post("/post_shore_comments/")
-async def root(shore_comment):
+async def root(shore_comment: dict):
     x = comments_db.insert_one(shore_comment)
     return shore_comment
