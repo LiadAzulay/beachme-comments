@@ -14,3 +14,7 @@ async def root(id):
     for c in comments:
         c['_id'] = str(c['_id'])
     return comments
+
+@app.get("/post_shore_comments/{shore_comment}")
+async def root(shore_comment):
+    return comments_db.insert_one(shore_comment)
