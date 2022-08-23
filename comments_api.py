@@ -1,3 +1,4 @@
+import json
 import pymongo
 from fastapi import FastAPI
 # Connecting to DB
@@ -17,5 +18,5 @@ async def root(id):
 
 @app.post("/post_shore_comments/")
 async def root(shore_comment: dict):
-    x = comments_db.insert_one(shore_comment)
-    return shore_comment
+    shore_comment = json.JSONEncoder(shore_comment)
+    return comments_db.insert_one(shore_comment)
