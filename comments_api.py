@@ -17,4 +17,5 @@ async def root(id):
 
 @app.post("/post_shore_comments/")
 async def root(shore_comment):
-    return comments_db.insert_one(shore_comment)
+    x = comments_db.insert_one(shore_comment)
+    return shore_comment
