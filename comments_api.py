@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import datetime
 
 # Connecting to DB
 mydb = MongoClient(
@@ -30,6 +31,7 @@ async def root(id):
 
 @app.post("/post_shore_comments")
 async def root(shore_comment: dict):
+    shore_comment['timestamp'] = datetime.datetime.now().strftime("%m/%d/%Y %H:%M:%S")
     id = str(comments_db.insert_one(shore_comment))
     return id
     
